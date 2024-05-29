@@ -5,24 +5,19 @@ import { useState } from 'react';
 import { ActionButton } from '../ActionButton';
 import { Links } from './Links';
 
-Bars3Icon;
-XMarkIcon;
-
 type Props = {
+  isAtTop: boolean;
   currentPage: string;
   setCurrentPage: (value: CurrentPage) => void;
 };
 
-function Navbar({ currentPage, setCurrentPage }: Props) {
-  // const flexBetween = 'flex items-center justify-between';
-  // const isAboveMediumScreens = useMediaQuery('(min-width: 1060px)');
+function Navbar({ isAtTop, currentPage, setCurrentPage }: Props) {
+  const navBackground = isAtTop ? '' : 'bg-primary-100 drop-shadow';
   const [open, setOpen] = useState<boolean>(false);
   return (
     <nav className='@container'>
       <div
-        className={
-          'fixed top-0 z-30 flex w-full items-center justify-between py-6'
-        }
+        className={`${navBackground} fixed top-0 z-30 flex w-full items-center justify-between py-6`}
       >
         <div
           className={
@@ -90,14 +85,52 @@ function Navbar({ currentPage, setCurrentPage }: Props) {
             <button
               type='button'
               className='rounded-full bg-secondary-500 p-2 @5xl:hidden'
-              onCanPlay={() => setOpen(!open)}
+              onClick={() => setOpen(!open)}
             >
               <Bars3Icon className='size-6 text-white' />
             </button>
           </div>
         </div>
       </div>
-      {/* Mobile menu nav */}
+      {/* 
+			//@bm-p Mobile menu nav fix h-full later
+			*/}
+      {open && (
+        <nav className='fixed top-0 right-0 z-40 h-dvh w-80 bg-primary-100 drop-shadow-xl @5xl:hidden'>
+          {/* X Icon */}
+          <div className='flex justify-end p-12'>
+            <button
+              type='button'
+              onClick={() => setOpen(false)}
+            >
+              <XMarkIcon className='size-6 text-gray-400' />
+            </button>
+          </div>
+          {/* Menu Items */}
+          <div className={'ms-[33%] flex flex-col gap-10 text-2xl'}>
+            <Links
+              page='Home'
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+            />
+            <Links
+              page='Benefits'
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+            />
+            <Links
+              page='Our Classes'
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+            />
+            <Links
+              page='Contact Us'
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+            />
+          </div>
+        </nav>
+      )}
     </nav>
   );
 }
