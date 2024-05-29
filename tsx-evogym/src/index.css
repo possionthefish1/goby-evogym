@@ -2,6 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+	html,
+	body,
+	#root,
+	.app {
+		font-family: 'DM Sans', sans-serif;
+		@apply w-full h-full text-gray-500;
+	}
+}
+
+@layer components {
+	.card {
+		background-color: theme('colors.white');
+		border-radius: theme('borderRadius.lg');
+		padding: theme('spacing.6');
+		box-shadow: theme('boxShadow.xl');
+	}
+	/* ... */
+}
+
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
