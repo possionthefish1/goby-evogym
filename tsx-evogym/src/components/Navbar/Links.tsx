@@ -14,7 +14,7 @@ function Links({ page, currentPage, setCurrentPage }: Props) {
     <AnchorLink
       className={`${
         currentPage === lowercasedPage ? 'text-primary-500' : ''
-      } transition duration-500 hover:text-primary-300`}
+      }transition duration-500 hover:text-primary-300`}
       href={`#${lowercasedPage}`}
       onClick={() => setCurrentPage(lowercasedPage)}
     >
