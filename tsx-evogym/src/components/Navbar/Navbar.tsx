@@ -1,16 +1,14 @@
 import Logo from '@/assets/Logo.png';
+import type { CurrentPage } from '@/shared/types';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
-import { useState } from 'react';
 import { Links } from './Links';
 
 Bars3Icon;
 XMarkIcon;
 
-useState;
-
 type Props = {
   currentPage: string;
-  setCurrentPage: (value: string) => void;
+  setCurrentPage: (value: CurrentPage) => void;
 };
 
 function Navbar({ currentPage, setCurrentPage }: Props) {
@@ -55,7 +53,7 @@ function Navbar({ currentPage, setCurrentPage }: Props) {
                   setCurrentPage={setCurrentPage}
                 />
                 <Links
-                  page='Contact'
+                  page='Contact Us'
                   currentPage={currentPage}
                   setCurrentPage={setCurrentPage}
                 />
